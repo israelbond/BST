@@ -1,6 +1,8 @@
 //list.h
+#include <stdlib.h>     /*srand, rand*/
+#include <time.h>       /*time*/
 #include <iostream>
-#include <cstring>
+//#include <cstring>
 #include <cctype>
 using namespace std;
 
@@ -25,15 +27,23 @@ class T
     	//These functions are supplied already
     	T();			//supplied
     	~T();			//supplied
-//        void build(); 		//supplied
-//        void display(); 	//supplied
+        void build(); 		//supplied
+        void display(); 	//supplied
+        void display(N*);
+        void inorder_display(N*&);
 
 /* ************** PLACE YOUR PUBLIC PROTOTYPE HERE ***************** */
+
+    
+        int Remove_Smallest_With_One_child();
+
         int merge_BSTs(T&, T, T);
         int insert(int);
  	
     private:
  	N* r;
+
+        int Remove_Smallest_With_One_child(N*&);
 
         int merge_BSTs(N*&, N*, N*); 
         int insert(N*&,int&);

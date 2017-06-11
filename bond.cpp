@@ -17,6 +17,59 @@ T::~T()
 
 }
 
+void T::build()
+{
+    int n=0, v=0;
+    srand(time(NULL));
+    n =                     ((rand() % 10) + 3);// n = 3 - 12
+    for(int i=0; i<=n; ++i) v = insert((rand() % 67) + 3);// (3) - (69) 
+    if(v)                   cout<<"-BST built-\n";
+}
+
+void T::display()
+{
+    if(!r)  return;
+    else    display(r);
+}
+
+void T::display(N* r)
+{
+    cout<<"INORDER:";
+    inorder_display(r);
+}
+
+void T::inorder_display(N*& r)
+{
+    if(!r)  return;
+    else    
+    {
+        inorder_display(r->get_left());
+        inorder_display(r->get_right());
+    }
+    cout<< r->get_d() << "  ";
+}
+int T::Remove_Smallest_With_One_child()
+{
+    if(!r)  return 0;
+    else    return Remove_Smallest_With_One_child(r);
+}
+
+int T::Remove_Smallest_With_One_child(N*&)
+{
+    int v=0;
+    if(!r)                      return v;
+    if(r->get_left())                 v =Remove_Smallest_With_One_child(r->get_left());
+    if(r->get_right() && !r->get_left())
+    {
+            N* t=   r->get_right();
+            v   =   r->get_d();
+            delete  r;
+            r   =   t;
+            return v;
+    }
+    else    return v;
+}
+
 void T::remove(N*& r)
 {
     if(!r) return;
